@@ -8,6 +8,7 @@ pops = ["Allston", "North End", "empty", "Jamaica Plain",
         "Back Bay", "Fenway", "Roxbury", "South End", "South Boston"]
 schools = [f"images/{i}-1.png" for i in range(1, 10)]
 countries = [f"images/{i}-2.png" for i in range(1, 10)]
+landmarks = [f"images/{i}-3.png" for i in range(1, 10)]
 
 
 class Tile(pygame.sprite.Sprite):
@@ -44,7 +45,7 @@ class Tile(pygame.sprite.Sprite):
     def change_puzzle(self, idx):
         if self.text != "empty":
             if idx == 0:
-                imp = pygame.image.load(pix[int(self.text) - 1]).convert()
+                img = pygame.image.load(pix[int(self.text) - 1]).convert()
             if idx == 1:
                 num = data_scraper.get_pop_data(pops[int(self.text) - 1])
                 font = pygame.font.SysFont("MS Serif", 30)
@@ -54,11 +55,14 @@ class Tile(pygame.sprite.Sprite):
                 self.image.blit(pop_num, (self.x + 30, self.y + 60))
                 return
             elif idx == 2:
-                imp = pygame.image.load(schools[int(self.text) - 1]).convert()
+                img = pygame.image.load(schools[int(self.text) - 1]).convert()
             elif idx == 3:
-                imp = pygame.image.load(countries[int(self.text) - 1]).convert()
-            imp = pygame.transform.scale(imp, (TILESIZE, TILESIZE))
-            self.image.blit(imp, self.rect)
+                img = pygame.image.load(countries[int(self.text) - 1]).convert()
+            elif idx == 4:
+                img = pygame.image.load(landmarks[int(self.text) - 1]).convert()
+
+            img = pygame.transform.scale(img, (TILESIZE, TILESIZE))
+            self.image.blit(img, self.rect)
         else:
             self.image.fill(LIGHTGREY)
 

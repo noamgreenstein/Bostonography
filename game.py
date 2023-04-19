@@ -104,6 +104,7 @@ class Game:
         self.buttons_list.append(Button(1000, 440, 200, 50, "Schools", WHITE, BLACK))
         self.buttons_list.append(Button(950, 510, 300, 50, "Origin Outside US", WHITE, BLACK))
         self.buttons_list.append(Button(1000, 580, 200, 50, "Boston", WHITE, BLACK))
+        self.buttons_list.append(Button(1000, 650, 200, 50, "Landmarks", WHITE, BLACK))
         self.type = type
         self.draw_tiles(type)
 
@@ -203,6 +204,8 @@ class Game:
                             self.new(3)
                         if button.text == "Boston":
                             self.new(0)
+                        if button.text == "Landmarks":
+                            self.new(4)
 
 
 game = Game()
